@@ -1,89 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-        <EditText
-            android:id="@+id/editTextInput"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:hint="@string/amount_query"
-             />
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/editTextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/amount_query"
+                android:importantForAutofill="no"
+                android:inputType="number" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/unit_query"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filledTextField" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:checkedButton="@+id/radio_button_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textView">
-        <RadioButton
-            android:id="@+id/radio_button_1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/US_choice"/>
-        <RadioButton
-            android:id="@+id/radio_button_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/metric_choice"
-            android:onClick=""/>
-
-    </RadioGroup>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/menu"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_hint"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup">
-
-        <AutoCompleteTextView
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
-            app:simpleItems="@array/US_units"
-            />
+            android:text="@string/unit_query"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filledTextField" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radio_button_1"
+            app:layout_constraintTop_toBottomOf="@id/textView">
 
-    <TextView
-        android:id="@+id/conversionResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="35sp"
-        app:layout_constraintTop_toBottomOf="@id/menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/result" />
+            <RadioButton
+                android:id="@+id/radio_button_US"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/US_choice" />
+
+            <RadioButton
+                android:id="@+id/radio_button_metric"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/metric_choice" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/menuParent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_hint"
+            app:layout_constraintTop_toBottomOf="@id/radioGroup">
+
+            <AutoCompleteTextView
+                android:id="@+id/menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:simpleItems="@array/US_units"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/conversionResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/result"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menuParent" />
+
+        <Button
+            android:id="@+id/calculate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/convert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menuParent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

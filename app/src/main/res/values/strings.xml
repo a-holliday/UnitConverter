@@ -1,24 +1,25 @@
 <resources>
     <string name="app_name">Unit Converter</string>
-    <string name="unit_query">Please specify your unit system</string>
+    <string name="unit_query">Please specify unit system to convert to</string>
     <string name="amount_query">Enter amount</string>
     <string name="input_hint">Select measurement</string>
     <string name="US_choice">US</string>
-    <string name="metric_choice">metric</string>
+    <string name="metric_choice">Metric</string>
+    <string name="convert">Convert</string>
     <string name="result">0</string>
     <array name="metric_units">
-        <item name="milliliters">milliliters</item>
-        <item name="liters">liters</item>
-        <item name="grams">grams</item>
-        <item name="kilograms">kilograms</item>
-        <item name="Celsius">Celsius</item>
+        <item name="milliliters">fluid ounces to milliliters</item>
+        <item name="liters">cups to liters</item>
+        <item name="grams">ounces to grams</item>
+        <item name="kilograms">pounds to kilograms</item>
+        <item name="Celsius">Fahrenheit to Celsius</item>
     </array>
 
     <array name="US_units">
-        <item name="fluid ounces">fluid ounces</item>
-        <item name="cups">cups</item>
-        <item name="ounces">ounces</item>
-        <item name="pounds">pounds</item>
-        <item name="Fahrenheit">Fahrenheit</item>
+        <item name="fluid ounces">milliliters to fluid ounces</item>
+        <item name="cups">liters to cups</item>
+        <item name="ounces">grams to ounces</item>
+        <item name="pounds">kilograms to pounds</item>
+        <item name="Fahrenheit">Celsius to Fahrenheit</item>
     </array>
 </resources>
