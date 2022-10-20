@@ -92,65 +92,170 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //To Metric Units
     fun flOzToMilli(input : Double) {
-        val result = input * 29.5735296
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_US){
+        val unitsMessage =
+            Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 29.5735296
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        else{
+            val signedMessage = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
+            signedMessage.show()
+        }
     }
 
     fun cupToLiter(input: Double){
-        val result = input *  0.23658824
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_US){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 0.23658824
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        else{
+            var toast =  Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
+            toast.show()
+        }
 
     }
 
     fun ozToGram(input: Double){
-        val result = input *  28.3495231
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_US){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 28.3495231
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        else{
+            var toast = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
+            toast.show()
+        }
     }
 
     fun lbToKg(input: Double){
-        val result = input *  0.45359237
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_US){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 0.45359237
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        else{
+            var toast = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
+            toast.show()
+        }
     }
 
     fun fToCDegree(input: Double){
-        val result = (input - 32) * (5/9)
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_US){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * (5.0 / 9.0) - 32
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        var toast = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
+        toast.show()
     }
 
+    //To US units
+
     fun milliToFlOz(input: Double){
-        val result = input *  0.03381402
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_metric){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 0.03381402
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        var toast = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
     }
 
     fun literToCup(input: Double){
-        val result = input *  4.22675284
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_metric){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 4.22675284
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        var toast = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
     }
 
     fun gramToOz(input: Double){
-        val result = input *  0.03527396
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_metric){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 0.03527396
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        var toast = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
     }
 
     fun kgToLb(input: Double){
-        val result = input * 2.20462262
-        val formattedResult = String.format("%.2f",result)
-        binding.conversionResult.setText(formattedResult)
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_metric){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+        if (input >=0) {
+            val result = input * 2.20462262
+            val formattedResult = String.format("%.2f", result)
+            binding.conversionResult.setText(formattedResult)
+        }
+        var toast = Toast.makeText(this, "Please enter a positive value", Toast.LENGTH_SHORT)
 
     }
 
-    fun cToFDegree(input: Double){
-        val result = (input + 32) * (9/5)
-        val formattedResult = String.format("%.2f",result)
+    fun cToFDegree(input: Double) {
+        if (binding.radioGroup.checkedRadioButtonId == R.id.radio_button_metric){
+            val unitsMessage =
+                Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_SHORT)
+            unitsMessage.show()
+            return
+        }
+
+        val result = input * (9.0 / 5.0) + 32
+
+        val formattedResult = String.format("%.2f", result)
         binding.conversionResult.setText(formattedResult)
     }
 }

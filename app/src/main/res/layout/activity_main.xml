@@ -23,7 +23,7 @@
                 android:layout_weight="1"
                 android:hint="@string/amount_query"
                 android:importantForAutofill="no"
-                android:inputType="number" />
+                android:inputType="number|numberSigned" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
