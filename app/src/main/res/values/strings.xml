@@ -17,7 +17,7 @@
 
     <array name="US_units">
         <item name="fluid ounces">milliliters to fluid ounces</item>
-        <item name="cups">liters to quarts</item>
+        <item name="quarts">liters to quarts</item>
         <item name="ounces">grams to ounces</item>
         <item name="pounds">kilograms to pounds</item>
         <item name="Fahrenheit">Celsius to Fahrenheit</item>

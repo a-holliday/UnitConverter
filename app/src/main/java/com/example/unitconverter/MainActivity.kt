@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             //get name of selection
             when (conversionTo) {
                 "fluid ounces to milliliters" -> calculate(input.toDouble(), unitChoice, conversionTo, 29.5735296, "metric")
-                "quarts to liters" -> calculate(input.toDouble(), unitChoice, conversionTo, 0.23658824,"metric")
+                "quarts to liters" -> calculate(input.toDouble(), unitChoice, conversionTo, 0.94635295,"metric")
                 "ounces to grams" -> calculate(input.toDouble(), unitChoice, conversionTo, 28.3495231, "metric")
                 "pounds to kilograms" -> calculate(input.toDouble(), unitChoice, conversionTo, 0.45359237, "metric")
                 "Fahrenheit to Celsius" ->calculate(input.toDouble(), unitChoice, conversionTo, 0.0, "metric")
@@ -114,8 +114,8 @@ class MainActivity : AppCompatActivity() {
 
         if( measurementTo == "Fahrenheit to Celsius" || measurementTo == "Celsius to Fahrenheit") {
             when (measurementTo) {
-                "Fahrenheit to Celsius" -> result = input * (5.0 / 9.0) - 32
-                "Celsius to Fahrenheit" -> result = input * (5.0 / 9.0) - 32
+                "Fahrenheit to Celsius" -> result = (input - 32) * 5.0 / 9.0
+                "Celsius to Fahrenheit" -> result = input * (9.0 / 5.0) + 32
             }
         }
         else if (input >= 0){
