@@ -1,7 +1,6 @@
 package com.example.unitconverter
 
 import android.view.View
-import androidx.test.core.app.ActivityScenario.ActivityAction
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
@@ -9,7 +8,6 @@ import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.RootMatchers.*
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -17,6 +15,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.Matchers
 import org.hamcrest.Matchers.containsString
 import org.hamcrest.Matchers.not
+import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -33,17 +32,25 @@ import org.junit.runner.RunWith
 class ExampleInstrumentedTest {
 
     //launch activity before every test (a rule)
-    @get:Rule()
+    @get:Rule
     val activity = ActivityScenarioRule(MainActivity::class.java)
 
     private var decorView: View? = null
 
     @Before
-    fun loadDecorView() {
+    fun setup() {
         activity.getScenario().onActivity { activity ->
             decorView = activity.getWindow().getDecorView()
+
         }
+
     }
+
+    @After
+    fun teardown() {
+        Thread.sleep(5000)
+    }
+
 
 
 
@@ -93,14 +100,112 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun validateToastMessage(){
+    fun validateToastMessageEmpty(){
         onView(withId(R.id.calculate_button))
             .perform(click())
 
-        onView(withText("Please enter the amount and select the conversion type."))
-            .inRoot((RootMatchers.isFocusable()))
-            .check(matches(isDisplayed()));
 
+        val toastString ="Please enter: [amount] [unit] [measurement]"
+
+        onView(withText(toastString))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+
+    }
+
+
+    fun validateToastMessageAmount(buttonid :Int){
+        onView(withId(buttonid))
+            .perform(click())
+
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+
+        val toastString ="Please enter: [amount] [measurement]"
+        // match toast with string toast_message_empty
+        onView(withText(toastString))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun validateToastMessageUnit(){
+        onView(withId(R.id.editTextInput))
+            .perform(typeText("500"))
+            .perform(ViewActions.closeSoftKeyboard())
+
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+
+        val toastString ="Please enter: [unit] [measurement]"
+        // match toast with string toast_unit
+        onView(withText(toastString))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun validateToastMessageConvert(){
+        onView(withId(R.id.editTextInput))
+            .perform(typeText("500"))
+            .perform(ViewActions.closeSoftKeyboard())
+
+        onView(withId(R.id.radio_button_US))
+            .perform(click());
+
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+
+        // match toast with string
+
+        val toastString ="Please enter: [measurement]"
+        onView(withText(toastString))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun validateToastMessageMismatch(){
+        onView(withId(R.id.editTextInput))
+            .perform(typeText("500"))
+            .perform(ViewActions.closeSoftKeyboard())
+
+        onView(withId(R.id.radio_button_US))
+            .perform(click());
+
+        onView(withHint("Select measurement"))
+            .perform(click())
+
+        onData(Matchers.anything())
+            .inRoot(RootMatchers.isPlatformPopup())
+            .atPosition(0)
+            .perform(click())
+
+        onView(withId(R.id.radio_button_metric))
+            .perform(click());
+
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+
+        // match toast with string toast_mismatch
+        onView(withText(R.string.toast_mismatch))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun validateWithUS(){
+        validateToastMessageAmount(R.id.radio_button_US)
+    }
+
+
+    @Test
+    fun validateWithMetric(){
+        validateToastMessageAmount(R.id.radio_button_metric)
     }
 
 
@@ -108,7 +213,7 @@ class ExampleInstrumentedTest {
 
 
 
-
+    @Test
     fun regularCalculations(){
         //US
         //milliliters to fluid ounces

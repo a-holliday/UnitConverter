@@ -78,24 +78,24 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-        else if(input.isEmpty() && conversionTo.isEmpty()){
-            var toast = Toast.makeText(this, "Please enter the amount and select the conversion type.", Toast.LENGTH_LONG)
-            toast.show()
-        }
-        else if (input.isEmpty()){
-            var toast = Toast.makeText(this, "Please enter the amount.", Toast.LENGTH_LONG)
-            toast.show()
+        val stringToastBuilder = StringBuilder()
+        stringToastBuilder.append("Please enter:")
+
+        if(input.isEmpty()) {
+            stringToastBuilder.append(" [amount]")
         }
 
-        else if (unitChoice ==""){
-            var toast = Toast.makeText(this, "Please specify a unit system to convert to.", Toast.LENGTH_LONG)
-            toast.show()
+        if (unitChoice ==""){
+            stringToastBuilder.append(" [unit]")
         }
 
-        else{
-            var toast = Toast.makeText(this, "Please select the conversion choices.", Toast.LENGTH_LONG)
-            toast.show()
+        if (conversionTo.isEmpty()){
+            stringToastBuilder.append(" [measurement]")
         }
+        if (input.isEmpty() || unitChoice == "" || conversionTo.isEmpty()) {
+            Toast.makeText(this, stringToastBuilder.toString(), Toast.LENGTH_SHORT).show()
+        }
+
 
 
     }
@@ -105,8 +105,8 @@ class MainActivity : AppCompatActivity() {
 
     fun calculate (input : Double, unitChoice : String, measurementTo : String, factor:Double, expectedUnit : String){
         var result = 0.0;
-            if (unitChoice != expectedUnit){
-                val unitsMessage = Toast.makeText(this, "Your measurement choice and unit system don't match", Toast.LENGTH_LONG)
+        if (unitChoice != expectedUnit){
+                val unitsMessage = Toast.makeText(this, R.string.toast_mismatch, Toast.LENGTH_LONG)
                 unitsMessage.show()
 
 

@@ -7,6 +7,12 @@
     <string name="metric_choice">Metric</string>
     <string name="convert">Convert</string>
     <string name="result">0</string>
+    <string name="toast_empty">Please enter the amount, unit system and select the measurement.</string>
+    <string name="toast_just_amount">Please enter the unit system and measurement.</string>
+    <string name="toast_amount">Please enter the amount.</string>
+    <string name="toast_unit">Please specify a unit system to convert to</string>
+    <string name="toast_convert">Please select the conversion choices.</string>
+    <string name="toast_mismatch">Your measurement choice and unit system don\'t match.</string>
     <array name="metric_units">
         <item name="milliliters">fluid ounces to milliliters</item>
         <item name="liters">quarts to liters</item>
